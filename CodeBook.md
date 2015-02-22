@@ -1,8 +1,4 @@
-## Getting and Cleaning Data Project
-The goal is to prepare tidy data that can be used for later analysis.
-
-### Description
-A code book that describes the variables, the data, and any transformations or work performed to clean up the data.
+## Code Book
 
 ### Source Data
 A full description is available at the site where the data was obtained [http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
@@ -16,21 +12,44 @@ The experiments have been carried out with a group of 30 volunteers within an ag
 
 The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See 'features_info.txt' for more details. 
 
-### Attribute Information
-For each record in the dataset it is provided: 
-- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
-- Triaxial Angular velocity from the gyroscope. 
-- A 561-feature vector with time and frequency domain variables. 
-- Its activity label. 
-- An identifier of the subject who carried out the experiment.
+- 'features_info.txt': Shows information about the variables used on the feature vector.
 
-### Transformation 1. Merge the training and the test sets to create one data set.
+- 'features.txt': List of all features.
 
-### Transformation 2. Extract only the measurements on the mean and standard deviation for each measurement. 
+- 'activity_labels.txt': Links the class labels with their activity name.
 
-### Transformation 3. Use descriptive activity names to name the activities in the data set
+- 'train/X_train.txt': Training set.
 
-### Transformation 4. Appropriately label the data set with descriptive activity names.
+- 'train/y_train.txt': Training labels.
 
-### Transformation 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject. 
-Produce a data set with the average of each variable for each activity and subject
+- 'test/X_test.txt': Test set.
+
+- 'test/y_test.txt': Test labels.
+
+
+
+### Transformation Steps
+ 0. Download the zipped dataset and unarchive it
+   1. Read in the Training and Test data set 'X_train.txt', 'y_train.txt', 'X_test.txt' and 'y_test.txt'
+   2. Read in the subjects, identifies the subject who performed the activity for each window sample 'subject_train.txt' and 'subject_test.txt'
+   3. Read in the Features set 'features.txt'
+   4. Read in the Activity labels 'activity_labels.txt'
+ 1. Merge the training and the test sets to create one data set.
+   1. Set the names of the features
+   2. Add activityId as new column
+
+ 2. Extract only the measurements on the mean and standard deviation for each measurement. 
+   1. Use select() to extract columns that contains("mean"), contains("std")
+   
+ 3. Use descriptive activity names to name the activities in the data set
+
+ 4. Appropriately label the data set with descriptive activity names.
+   1. use gsub() function replaces all matches of a string
+	replace "Acc" with "Accelerator"
+	replace "Mag" with "Magnitude"
+	replace "Gyro" with "Gyroscope"
+	replace "^t" with "time"
+	replace "^f" with "frequency"
+ 
+ 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject. 
+   1. Use aggregate() to the average for each subject and activity
