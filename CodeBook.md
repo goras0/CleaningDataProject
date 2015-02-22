@@ -1,7 +1,8 @@
 ## Getting and Cleaning Data Project
-A code book that describes the variables, the data, and any transformations or work performed to clean up the data.
+The goal is to prepare tidy data that can be used for later analysis.
 
 ### Description
+A code book that describes the variables, the data, and any transformations or work performed to clean up the data.
 
 ### Source Data
 A full description is available at the site where the data was obtained [http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
@@ -23,13 +24,13 @@ For each record in the dataset it is provided:
 - Its activity label. 
 - An identifier of the subject who carried out the experiment.
 
-### Section 1. Merge the training and the test sets to create one data set.
+### Transformation 1. Merge the training and the test sets to create one data set.
 
-### Section 2. Extract only the measurements on the mean and standard deviation for each measurement. 
+### Transformation 2. Extract only the measurements on the mean and standard deviation for each measurement. 
 
-## Section 3. Use descriptive activity names to name the activities in the data set
+### Transformation 3. Use descriptive activity names to name the activities in the data set
 
-## Section 4. Appropriately label the data set with descriptive activity names.
+### Transformation 4. Appropriately label the data set with descriptive activity names.
 
-## Section 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject. 
-Pproduce a data set with the average of each variable for each activity and subject
+### Transformation 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject. 
+Produce a data set with the average of each variable for each activity and subject
