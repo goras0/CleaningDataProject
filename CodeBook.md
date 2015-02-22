@@ -39,17 +39,75 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
    2. Add activityId as new column
 
  2. Extract only the measurements on the mean and standard deviation for each measurement. 
-   1. Use select() to extract columns that contains("mean"), contains("std")
+   1. Make syntactically valid names out of character vectors with make.names()
+   2. Use select() to extract columns that contains("mean"), contains("std")
    
  3. Use descriptive activity names to name the activities in the data set
 
  4. Appropriately label the data set with descriptive activity names.
    1. use gsub() function replaces all matches of a string
-	replace "Acc" with "Accelerator"
-	replace "Mag" with "Magnitude"
-	replace "Gyro" with "Gyroscope"
-	replace "^t" with "time"
-	replace "^f" with "frequency"
+	replace "mean" with "Mean"
+	replace "std" with "Std"	
+	replace "BodyBody" with "Body"
+	remove "."
  
  5. Create a second, independent tidy data set with the average of each variable for each activity and each subject. 
    1. Use aggregate() to the average for each subject and activity
+   
+## Tidy data set
+
+[1] SubjectId
+Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+
+[2] ActivityId
+* `WALKING` (value `1`)
+* `WALKING_UPSTAIRS` (value `2`)
+* `WALKING_DOWNSTAIRS` (value `3`)
+* `SITTING` (value `4`)
+* `STANDING` (value `5`)
+* `LAYING` (value `6`)
+
+[3-88] Features                   
+ [3] "tBodyAccMeanX"                     "tBodyAccMeanY"                    
+ [5] "tBodyAccMeanZ"                     "tGravityAccMeanX"                 
+ [7] "tGravityAccMeanY"                  "tGravityAccMeanZ"                 
+ [9] "tBodyAccJerkMeanX"                 "tBodyAccJerkMeanY"                
+[11] "tBodyAccJerkMeanZ"                 "tBodyGyroMeanX"                   
+[13] "tBodyGyroMeanY"                    "tBodyGyroMeanZ"                   
+[15] "tBodyGyroJerkMeanX"                "tBodyGyroJerkMeanY"               
+[17] "tBodyGyroJerkMeanZ"                "tBodyAccMagMean"                  
+[19] "tGravityAccMagMean"                "tBodyAccJerkMagMean"              
+[21] "tBodyGyroMagMean"                  "tBodyGyroJerkMagMean"             
+[23] "fBodyAccMeanX"                     "fBodyAccMeanY"                    
+[25] "fBodyAccMeanZ"                     "fBodyAccMeanFreqX"                
+[27] "fBodyAccMeanFreqY"                 "fBodyAccMeanFreqZ"                
+[29] "fBodyAccJerkMeanX"                 "fBodyAccJerkMeanY"                
+[31] "fBodyAccJerkMeanZ"                 "fBodyAccJerkMeanFreqX"            
+[33] "fBodyAccJerkMeanFreqY"             "fBodyAccJerkMeanFreqZ"            
+[35] "fBodyGyroMeanX"                    "fBodyGyroMeanY"                   
+[37] "fBodyGyroMeanZ"                    "fBodyGyroMeanFreqX"               
+[39] "fBodyGyroMeanFreqY"                "fBodyGyroMeanFreqZ"               
+[41] "fBodyAccMagMean"                   "fBodyAccMagMeanFreq"              
+[43] "fBodyAccJerkMagMean"               "fBodyAccJerkMagMeanFreq"          
+[45] "fBodyGyroMagMean"                  "fBodyGyroMagMeanFreq"             
+[47] "fBodyGyroJerkMagMean"              "fBodyGyroJerkMagMeanFreq"         
+[49] "angletBodyAccMeangravity"          "angletBodyAccJerkMeangravityMean" 
+[51] "angletBodyGyroMeangravityMean"     "angletBodyGyroJerkMeangravityMean"
+[53] "angleXgravityMean"                 "angleYgravityMean"                
+[55] "angleZgravityMean"                 "tBodyAccStdX"                     
+[57] "tBodyAccStdY"                      "tBodyAccStdZ"                     
+[59] "tGravityAccStdX"                   "tGravityAccStdY"                  
+[61] "tGravityAccStdZ"                   "tBodyAccJerkStdX"                 
+[63] "tBodyAccJerkStdY"                  "tBodyAccJerkStdZ"                 
+[65] "tBodyGyroStdX"                     "tBodyGyroStdY"                    
+[67] "tBodyGyroStdZ"                     "tBodyGyroJerkStdX"                
+[69] "tBodyGyroJerkStdY"                 "tBodyGyroJerkStdZ"                
+[71] "tBodyAccMagStd"                    "tGravityAccMagStd"                
+[73] "tBodyAccJerkMagStd"                "tBodyGyroMagStd"                  
+[75] "tBodyGyroJerkMagStd"               "fBodyAccStdX"                     
+[77] "fBodyAccStdY"                      "fBodyAccStdZ"                     
+[79] "fBodyAccJerkStdX"                  "fBodyAccJerkStdY"                 
+[81] "fBodyAccJerkStdZ"                  "fBodyGyroStdX"                    
+[83] "fBodyGyroStdY"                     "fBodyGyroStdZ"                    
+[85] "fBodyAccMagStd"                    "fBodyAccJerkMagStd"               
+[87] "fBodyGyroMagStd"                   "fBodyGyroJerkMagStd" 

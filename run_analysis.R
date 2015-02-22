@@ -92,13 +92,11 @@ data.extract$activityId[data.extract$activityId == 6] <- "Laying"
 #------------------------------------------------------------------------------
 # 4. Appropriately labels the data set with descriptive variable names. 
 #------------------------------------------------------------------------------
-
-names(data.extract) <- gsub("Acc", "Accelerator", names(data.extract))
-names(data.extract) <- gsub("Mag", "Magnitude", names(data.extract))
-names(data.extract) <- gsub("Gyro", "Gyroscope", names(data.extract))
-names(data.extract) <- gsub("^t", "time", names(data.extract))
-names(data.extract) <- gsub("^f", "frequency", names(data.extract))
-
+names(data.extract) <- gsub('mean', 'Mean', names(data.extract))
+names(data.extract) <- gsub('std', 'Std', names(data.extract))
+names(data.extract) <- gsub('[()-]', '', names(data.extract))
+names(data.extract) <- gsub('BodyBody', 'Body', names(data.extract))
+names(data.extract) <- gsub('\\.', '', names(data.extract))
 
 #------------------------------------------------------------------------------
 # 5. From the data set in step 4, creates a second, independent tidy data set
